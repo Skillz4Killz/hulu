@@ -51,18 +51,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ? context.query.genre
       : context.query.genre?.[0] || "";
 
-  // const data = await fetch(
-  //   `https://api.themoviedb.org/3${
-  //     request[genre]?.url || request.fetchTrending.url
-  //   }`
-  // )
-  //   .then((res) => res.json())
-  //   .catch(console.error);
+  const data = await fetch(
+    `https://api.themoviedb.org/3${
+      request[genre]?.url || request.fetchTrending.url
+    }`
+  )
+    .then((res) => res.json())
+    .catch(console.error);
 
   return {
     props: {
-      // results: data?.results || [],
-      results: [],
+      results: data?.results || [],
     },
   };
 };

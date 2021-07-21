@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const genre =
     typeof context.query.genre === "string"
       ? context.query.genre
-      : context.query.genre[0];
+      : context.query.genre?.[0] || "";
 
   // const data = await fetch(
   //   `https://api.themoviedb.org/3${
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       // results: data?.results || [],
-      results: []
+      results: [],
     },
   };
 };
